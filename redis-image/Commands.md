@@ -12,7 +12,10 @@ Docker RUN ImageID
 docker build -t Repository:TAG .
 docker build -t jhonzp/redis:latest .
 docker RUN jhonzp/redis
-### Create Imgage from docker
-docker exe --it DockerID Command
-
+### Create same Imgage from container without use dockerfile
+docker run -it alpine sh
+/# apk --update redis
+docker ps
+docker commit -c 'CMD "redis-server"' DockerID
+docker commit -c 'CMD "redis-server"' 2b879520a2f2
 
