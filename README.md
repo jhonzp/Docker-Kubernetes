@@ -5,14 +5,19 @@ docker ps <br />
 docker image ls <br />
 docker container ls  <br />
 docker containerid Stop
-### Create Image and Run a Docker from it
+### Create Image  from dockerfile and Run a Docker from it
 Docker build .  <br />
-Docker RUN ImageID 
+docker run ImageID 
 ### TAG (version) build image
 docker build -t Repository:TAG . <br />
 docker build -t jhonzp/redis:latest . <br />
 docker RUN jhonzp/redis
 ### Create Imgage from docker
-docker exe --it DockerID Command <br />
+docker run -it alpine sh <br />
+/# apk --update redis <br />
+docker ps <br />
+docker commit -c 'CMD "redis-server"' DockerID <br />
+docker commit -c 'CMD "redis-server"' 2b879520a2f2
+### 
 
 

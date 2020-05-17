@@ -11,7 +11,7 @@ Docker RUN ImageID
 ### TAG (version) build image
 docker build -t Repository:TAG . <br />
 docker build -t jhonzp/redis:latest . <br />
-docker RUN jhonzp/redis 
+docker run jhonzp/redis 
 ### Create same Imgage from container without use dockerfile
 docker run -it alpine sh <br />
 /# apk --update redis <br />
