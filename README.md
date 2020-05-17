@@ -18,6 +18,8 @@ docker run -it alpine sh <br />
 docker ps <br />
 docker commit -c 'CMD "redis-server"' DockerID <br />
 docker commit -c 'CMD "redis-server"' 2b879520a2f2
-### 
-
+### Create node app image using docker file.
+cd simplewebNode <br />
+docker build . -t jhonzp/simplewebnode .  <br />
+docker run jhonzp/simplewebnode
 
