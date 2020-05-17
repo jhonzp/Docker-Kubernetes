@@ -2,20 +2,20 @@
 ## Commands
 ### General
 docker ps
-docker image ls
-docker container ls
+docker image ls <br />
+docker container ls <br />
 docker containerid Stop
 ### Create Image and Run a Docker from it
-Docker build .
-Docker RUN ImageID
+Docker build . <br />
+Docker RUN ImageID 
 ### TAG (version) build image
-docker build -t Repository:TAG .
-docker build -t jhonzp/redis:latest .
-docker RUN jhonzp/redis
+docker build -t Repository:TAG . <br />
+docker build -t jhonzp/redis:latest . <br />
+docker RUN jhonzp/redis 
 ### Create same Imgage from container without use dockerfile
-docker run -it alpine sh
-/# apk --update redis
-docker ps
-docker commit -c 'CMD "redis-server"' DockerID
-docker commit -c 'CMD "redis-server"' 2b879520a2f2
+docker run -it alpine sh <br />
+/# apk --update redis <br />
+docker ps <br />
+docker commit -c 'CMD "redis-server"' DockerID <br />
+docker commit -c 'CMD "redis-server"' 2b879520a2f2 <br />
 
