@@ -22,4 +22,7 @@ docker commit -c 'CMD "redis-server"' 2b879520a2f2
 cd simplewebNode <br />
 docker build . -t jhonzp/simplewebnode .  <br />
 docker run jhonzp/simplewebnode
+### Run Docker for enable inside port
+docker run -p localport:containerport jhonzp/simplewebnode
+docker run -p 8080:8080 jhonzp/simplewebnode
 
