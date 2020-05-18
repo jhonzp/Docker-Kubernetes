@@ -25,4 +25,8 @@ docker run jhonzp/simplewebnode
 ### Run Docker for enable inside port
 docker run -p localport:containerport jhonzp/simplewebnode
 docker run -p 8080:8080 jhonzp/simplewebnode
+### Run command inside of Docker
+docker ps
+docker exec -it dockerid command
+docker exec -it 01dfd6892b21 sh
 

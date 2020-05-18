@@ -6,3 +6,7 @@ docker run jhonzp/simplewebnode
 docker run -p localport:containerport jhonzp/simplewebnode
 docker run -p 8080:8080 jhonzp/simplewebnode
 docker run -p 5000:8080 jhonzp/simplewebnode
+### Run command inside of Docker
+docker ps
+docker exec -it dockerid command
+docker exec -it dockerid sh
