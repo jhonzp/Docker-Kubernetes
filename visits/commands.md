@@ -8,3 +8,5 @@ docker-compose up --build
 docker-compose up -d
 ### stop and remove all resource running
 docker-compose down
+### list of status ofservices running in docker compose
+docker-compose ps
