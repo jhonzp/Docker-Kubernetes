@@ -29,4 +29,15 @@ docker run -p 8080:8080 jhonzp/simplewebnode
 docker ps <br />
 docker exec -it dockerid command <br />
 docker exec -it 01dfd6892b21 sh
+## docker compose 
+### similar to docker run
+docker-compose up
+### similar to docker build, rebuild docker and upgrade the servicess
+docker-compose up --build
+### similar to docker run, does free console
+docker-compose up -d
+### stop and remove all resource running
+docker-compose down
+### list of status ofservices running in docker compose
+docker-compose ps
 
