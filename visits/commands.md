@@ -10,3 +10,5 @@ docker-compose up -d
 docker-compose down
 ### list of status ofservices running in docker compose
 docker-compose ps
+### list of services in compose
+docker-compose ps –services
