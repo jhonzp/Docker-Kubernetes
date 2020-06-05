@@ -1,0 +1,71 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  annotations:
+    kompose.cmd: D:\DEV\Install\kompose.exe convert
+    kompose.version: 1.21.0 (992df58d8)
+  creationTimestamp: null
+  labels:
+    io.kompose.service: nodejs
+  name: nodejs
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      io.kompose.service: nodejs
+  strategy: {}
+  template:
+    metadata:
+      annotations:
+        kompose.cmd: D:\DEV\Install\kompose.exe convert
+        kompose.version: 1.21.0 (992df58d8)
+      creationTimestamp: null
+      labels:
+        io.kompose.network/app-network: "true"
+        io.kompose.service: nodejs
+    spec:
+      containers:
+      - args:
+        - ./wait-for.sh
+        - db:27017
+        - --
+        - /home/node/app/node_modules/.bin/nodemon
+        - app.js
+        env:
+        - name: MONGO_DB
+          valueFrom:
+            configMapKeyRef:
+              key: MONGO_DB
+              name: env
+        - name: MONGO_HOSTNAME
+          value: db
+        - name: MONGO_PASSWORD
+          valueFrom:
+            configMapKeyRef:
+              key: MONGO_PASSWORD
+              name: env
+        - name: MONGO_PORT
+          valueFrom:
+            configMapKeyRef:
+              key: MONGO_PORT
+              name: env
+        - name: MONGO_USERNAME
+          valueFrom:
+            configMapKeyRef:
+              key: MONGO_USERNAME
+              name: env
+        - name: NODE_PORT
+          valueFrom:
+            configMapKeyRef:
+              key: NODE_PORT
+              name: env
+        image: nodejs
+        imagePullPolicy: ""
+        name: nodejs
+        ports:
+        - containerPort: 8080
+        resources: {}
+      restartPolicy: Always
+      serviceAccountName: ""
+      volumes: null
+status: {}

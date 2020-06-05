@@ -7,7 +7,7 @@ services:
     node-app:
         ##Policy restart ("no", always, on-failure,unless-stopped)
         build: .
-        restart: always
+        restart: "no"
         ports: 
             - "4001:8081"
         depends_on: 
