@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: poddoscont
+  labels:
+    app: pod-label
+spec:
+    containers:
+    - name: cont1
+      image: python:3.6-alpine
+      command: ['sh', '-c', 'echo "cont1" > index.html && python -m http.server 8089'] 
+    - name: cont2
+      command: ['sh', '-c', 'echo "cont2" > index.html && python -m http.server 8087'] 
+      image: python:3.6-alpine  
