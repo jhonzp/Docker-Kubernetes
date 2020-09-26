@@ -1,0 +1,40 @@
+#Deployment
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  annotations:
+    kubernetes.io/change-cause: "Start Backend Deploy and svc"  
+  name: deploy-backendgo
+  labels:
+    app: backendgo
+spec: 
+  replicas: 3
+  selector:
+    matchLabels:
+      app: backendgo
+  template:
+    metadata:
+      labels:
+        app: backendgo
+    spec:
+      containers:
+      - name: backendgo-cont
+        image: jhonzp/k8s-hands-on-bk
+        imagePullPolicy: IfNotPresent        
+---
+#Services
+apiVersion: v1
+kind: Service
+metadata:
+  name: service-backendgo
+  labels:
+    app: backendgo
+spec:
+  type: NodePort
+  externalTrafficPolicy: Local  
+  selector:
+    app: backendgo
+  ports:
+  - protocol: TCP
+    port: 9090
+    targetPort: 9090
