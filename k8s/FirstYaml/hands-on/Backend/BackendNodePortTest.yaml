@@ -19,7 +19,7 @@ spec:
     spec:
       containers:
       - name: backendgo-cont
-        image: jhonzp/k8s-hands-on-bk:v2
+        image: jhonzp/k8s-hands-on-bk
         imagePullPolicy: IfNotPresent        
 ---
 #Services
@@ -29,12 +29,12 @@ metadata:
   name: service-backendgo
   labels:
     app: backendgo
-spec:  
+spec:
+  type: NodePort
   selector:
     app: backendgo
   ports:
-  - name: http
-    protocol: TCP
-    port: 9090
-    targetPort: 9090
+    - protocol: TCP
+      port: 9090
+      targetPort: 9090  
     
