@@ -1,0 +1,40 @@
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: qa
+  labels:
+    name: qa
+---
+apiVersion: v1
+kind: ResourceQuota
+metadata:
+  name: rq-pod
+  namespace: qa
+spec:
+  hard:
+    pods: "4"
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  namespace: qa
+  annotations:
+    kubernetes.io/change-cause: "Changes port to 110"  
+  name: deploy-rq-pod
+  labels:
+    app: front
+spec: 
+  replicas: 5
+  selector:
+    matchLabels:
+      app: front
+  template:
+    metadata:
+      labels:
+        app: front
+    spec:
+      containers:
+      - name: nginx
+        image: nginx:alpine
+        ports:
+        - containerPort: 110        
