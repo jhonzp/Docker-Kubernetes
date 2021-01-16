@@ -1,0 +1,8 @@
+https://docs.aws.amazon.com/eks/latest/userguide/horizontal-pod-autoscaler.html
+
+kubectl -n kube-system get deployment/metrics-server
+
+kubectl apply -f https://github.com/kubernetes-sigs/metrics-server/releases/download/v0.3.7/components.yaml
+
+
+kubectl apply -f https://k8s.io/examples/application/php-apache.yaml

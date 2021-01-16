@@ -1,0 +1,11 @@
+https://aws.amazon.com/es/premiumsupport/knowledge-center/eks-alb-ingress-controller-setup/
+
+create cluster
+eksctl create cluster --name eksTestJhon --without-nodegroup --region us-east-1 --zones us-east-1b,us-east-1a
+Create node
+eksctl create nodegroup --cluster eksTestJhon --version auto --name testnodeslnx  --node-type t3.medium --node-ami auto   --nodes 1 --nodes-min 1 --nodes-max 3 --asg-access
+
+Ingress controller
+eksctl utils associate-iam-oidc-provider --cluster eksTestJhon --region us-east-1 --approve
+aws iam create-policy --policy-name ALBIngressControllerIAMPolicy --policy-document https://raw.githubusercontent.com/kubernetes-sigs/aws-alb-ingress-controller/v1.1.4/docs/examples/iam-policy.json
+eksctl create iamserviceaccount --name alb-ingress-controller --namespace kube-system --cluster eksTestJhon --attach-policy-arn arn:aws:iam::142222245877:policy/ALBIngressControllerIAMPolicy --approve --override-existing-serviceaccounts
